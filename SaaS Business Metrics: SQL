@@ -1,5 +1,9 @@
 --The table you will see referenced below is the customers sheet initially because I combined them when I switched to Tableau.
 
+--IMPORTANT: This dataset was imported from CSV. Blank churn_date cells are stored as empty strings ('') not NULL values in SQLiteOnline.
+--All queries use churn_date = '' for active and churn_date != '' for churned.
+--IS NULL does not work on this imported data.
+
 --Count total SaasDataCombinedclean:
 
 SELECT COUNT(*)
@@ -72,22 +76,8 @@ GROUP BY status, plan_type
 ORDER BY plan_type;
 
 
---Are customers churning early or late?
---Is churn accelerating over time?
-
-SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year, plan_type
-FROM customers
-where churn_date != ''
-GROUP BY plan_type, date_month_year
-ORDER BY date_month_year;
-
-SELECT plan_type, ROUND(AVG(JULIANDAY(churn_date) - JULIANDAY(signup_date)),0) AS avg_days_before_churn
-FROM customers
-WHERE churn_date != ''
-GROUP BY plan_type;
-
-
-#Active customer tenure calculated as of 2025-06-30 the last date in the dataset rather than the current date to avoid artificial inflation from data staleness.
+--Are customers churning early or late? Calculated average days from signup to churn date for active customers.
+--Active customer tenure calculated as of 2025-06-30 the last date in the dataset rather than the current date to avoid artificial inflation from data staleness.
 
 SELECT COUNT(customer_id), plan_type, ROUND(AVG(JULIANDAY(DATE('2025-06-30')) - JULIANDAY(signup_date)),0) AS tenure
 FROM customers
@@ -95,39 +85,28 @@ where churn_date = ''
 GROUP BY plan_type
 ORDER BY tenure;
 
-SELECT * FROM customers
-ORDER BY signup_date;
+--How many customers churned per month? This revealed the March 2025 spike.
 
-SELECT
-CASE 
-    WHEN churn_date = '' THEN 'Active'
-    ELSE 'Churned'
-END AS status,
-COUNT(*) as total, plan_type
-FROM customers
-GROUP BY status, plan_type
-ORDER BY plan_type;
-
-SELECT plan_type, ROUND(AVG(JULIANDAY(churn_date) - JULIANDAY(signup_date)),0) AS avg_days_before_churn
+SELECT COUNT(customer_id), 
+  STRFTIME('%Y-%m', churn_date) AS date_month_year
 FROM customers
 WHERE churn_date != ''
-GROUP BY plan_type;
-
-SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year, plan_type
-FROM customers
-where churn_date != ''
-GROUP BY plan_type, date_month_year
-ORDER BY date_month_year;
-
-SELECT COUNT(customer_id), plan_type, ROUND(AVG(JULIANDAY(DATE('2025-06-30')) - JULIANDAY(signup_date)),0) AS tenure
-FROM customers
-where churn_date = ''
-GROUP BY plan_type
-ORDER BY tenure;
-
-SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year  --How many customers churned per month.
-FROM customers
-where churn_date != ''
 GROUP BY date_month_year
 ORDER BY date_month_year;
+
+--Results: Churn low throughout 2024 (1-8/month). Tripled in March 2025 (26).
+--Remained elevated April-May (23 each). Spiked again June 2025 (41).
+
+
+--Average days before churn by plan type.
+
+SELECT plan_type, 
+  ROUND(AVG(JULIANDAY(churn_date) - JULIANDAY(signup_date)),0) 
+  AS avg_days_before_churn
+FROM customers
+WHERE churn_date != ''
+GROUP BY plan_type;
+
+--Results: Basic 151 days (~5 months), Enterprise 161 days (~5.4 months), Pro 175 days (~5.8 months).
+--Among churned customers tenure was consistent across all plans.
 
