@@ -1,0 +1,133 @@
+--The table you will see referenced below is the customers sheet initially because I combined them when I switched to Tableau.
+
+--Count total SaasDataCombinedclean:
+
+SELECT COUNT(*)
+FROM customers;
+--1000
+
+
+--Count by plan type:
+
+SELECT plan_type, COUNT(plan_type) AS total 
+FROM customers
+GROUP BY plan_type;
+
+-Basic 327
+--Enterprise 330
+--Pro 343
+
+
+--Average acquisition cost by plan:
+
+SELECT plan_type, AVG(acquisition_cost) AS total_ac 
+FROM customers
+GROUP BY plan_type;
+
+--Basic 30
+--Enterprise 200
+--Pro 100
+
+
+--Churned vs active count:
+
+SELECT
+CASE 
+	when churn_date = '' THEN 'Active'
+    ELSE 'Churned'
+END AS status,
+COUNT(*) as total
+FROM customers
+GROUP BY status;
+
+--Active 832
+--Churned 168
+
+
+--Average acquisition cost churned vs active:
+
+SELECT
+  CASE 
+	when churn_date = '' THEN 'Active'
+    ELSE 'Churned'
+END AS status, AVG(acquisition_cost)
+From customers
+GROUP BY status;
+
+--Active 110.18
+--Churned 109.76
+
+--Do churned customers have higher acquisition costs than active customers? No
+
+--Churn count and active count broken down by plan type
+
+SELECT              --I used a CASE/WHEN query to change the blanks in the churn_date column to 'Active' to reflect these are open services (not churned).
+CASE 
+    WHEN churn_date = '' THEN 'Active'
+    ELSE 'Churned'
+END AS status,
+COUNT(*) as total, plan_type
+FROM customers
+GROUP BY status, plan_type
+ORDER BY plan_type;
+
+
+--Are customers churning early or late?
+--Is churn accelerating over time?
+
+SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year, plan_type
+FROM customers
+where churn_date != ''
+GROUP BY plan_type, date_month_year
+ORDER BY date_month_year;
+
+SELECT plan_type, ROUND(AVG(JULIANDAY(churn_date) - JULIANDAY(signup_date)),0) AS avg_days_before_churn
+FROM customers
+WHERE churn_date != ''
+GROUP BY plan_type;
+
+
+#Active customer tenure calculated as of 2025-06-30 the last date in the dataset rather than the current date to avoid artificial inflation from data staleness.
+
+SELECT COUNT(customer_id), plan_type, ROUND(AVG(JULIANDAY(DATE('2025-06-30')) - JULIANDAY(signup_date)),0) AS tenure
+FROM customers
+where churn_date = ''
+GROUP BY plan_type
+ORDER BY tenure;
+
+SELECT * FROM customers
+ORDER BY signup_date;
+
+SELECT
+CASE 
+    WHEN churn_date = '' THEN 'Active'
+    ELSE 'Churned'
+END AS status,
+COUNT(*) as total, plan_type
+FROM customers
+GROUP BY status, plan_type
+ORDER BY plan_type;
+
+SELECT plan_type, ROUND(AVG(JULIANDAY(churn_date) - JULIANDAY(signup_date)),0) AS avg_days_before_churn
+FROM customers
+WHERE churn_date != ''
+GROUP BY plan_type;
+
+SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year, plan_type
+FROM customers
+where churn_date != ''
+GROUP BY plan_type, date_month_year
+ORDER BY date_month_year;
+
+SELECT COUNT(customer_id), plan_type, ROUND(AVG(JULIANDAY(DATE('2025-06-30')) - JULIANDAY(signup_date)),0) AS tenure
+FROM customers
+where churn_date = ''
+GROUP BY plan_type
+ORDER BY tenure;
+
+SELECT COUNT(customer_id), STRFTIME('%Y-%m', churn_date) AS date_month_year  --How many customers churned per month.
+FROM customers
+where churn_date != ''
+GROUP BY date_month_year
+ORDER BY date_month_year;
+
