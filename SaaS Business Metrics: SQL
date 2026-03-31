@@ -13,7 +13,7 @@ SELECT plan_type, COUNT(plan_type) AS total
 FROM customers
 GROUP BY plan_type;
 
--Basic 327
+--Basic 327
 --Enterprise 330
 --Pro 343
 
