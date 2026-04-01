@@ -4,7 +4,7 @@ Since starting self directed learning over a year ago, I had the opportunity
 to work in a Junior Data Analyst capacity in healthcare at the end of a year 
 long Customer Experience Analyst contract. A lot of my background has been in 
 B2C and I wanted to apply those skills in a SaaS context, so SaaS churn was 
-the perfect business problem. Churn is a common issue amongst businesses and 
+the perfect business problem to solve. Churn is a common issue amongst businesses and 
 being able to understand why is the difference between improving CX/business 
 reputation and losing millions.
 
