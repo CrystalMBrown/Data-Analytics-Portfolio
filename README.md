@@ -129,7 +129,7 @@ between what customers expected from the product and what they experienced.
 
 ## Visualizations
 
-[View Dashboard on Tableau Public](PASTE YOUR TABLEAU PUBLIC WORKBOOK URL HERE)
+[View Dashboard on Tableau Public](https://public.tableau.com/app/profile/crystal.brown8544/viz/SAASCUSTOMERCHURN/SAASCUSTOMERCHURN)
 
 ---
 
