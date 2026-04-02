@@ -124,7 +124,8 @@ between what customers expected from the product and what they experienced.
 ## Files
 
 - [SQL Queries](https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/SaaS%20Business%20Metrics%3A%20SQL)
-- [Presentation Slides]
+- [Presentation Slides](https://share.google/TIdiCFcHHW23It6W0)
+  
 ---
 
 ## Visualizations
