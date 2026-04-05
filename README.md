@@ -117,7 +117,7 @@ between what customers expected from the product and what they experienced.
 - Microsoft Excel
 - [SQLiteOnline](https://sqliteonline.com)
 - [Tableau Public](https://public.tableau.com)
-- Microsoft PowerPoint
+- [Microsoft PowerPoint](https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/Saas%20customer%20Churn%20Analysis(1).PDF)
 
 ---
 
