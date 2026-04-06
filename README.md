@@ -124,7 +124,7 @@ between what customers expected from the product and what they experienced.
 ## Files
 
 - [SQL Queries](https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/SaaS%20Business%20Metrics%3A%20SQL)
-- [Presentation Slides]([https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/Saas%20customer%20Churn%20Analysis(1).PDF](https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/Saas%20customer%20Churn%20Analysis.pdf))
+- [Presentation Slides](https://github.com/CrystalMBrown/Data-Analytics-Portfolio/blob/main/Saas%20customer%20Churn%20Analysis.pdf)
   
 ---
 
