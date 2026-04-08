@@ -64,24 +64,24 @@ Shorter tenure among churned users reflects the timing of the spike, not behavio
 
 ## Recommendations
 
-1. **Investigate March–June 2025**
+**1. Investigate March–June 2025**
   
 Cross-reference marketing campaign data, 
 support ticket history, and the development changelog to identify any product, 
 campaign, or operational changes that coincided with the churn spike.
 
-4. **Extend the dataset to present day**
+**2. Extend the dataset to present day**
 
 Confirm whether churn has stabilized 
 or is still accelerating. If still elevated, immediate intervention is needed 
 before the customer base erodes further.
 
-7. **Implement month 4 proactive Customer Success outreach**
+**3. Implement month 4 proactive Customer Success outreach**
 
 A check-in call or automated health survey to identify disengaging customers before they reach 
 the churn window.
 
-10. **Deploy a one-question exit survey**
+**4. Deploy a one-question exit survey**
 
 Even a 10% response rate from 
 recently churned customers would provide direct evidence of the root cause 
