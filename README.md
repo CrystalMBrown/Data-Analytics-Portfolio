@@ -15,12 +15,9 @@ Instead, it **spiked sharply in March and June 2025**, suggesting a likely exter
 
 ## Why I Chose This Dataset
 
-I initially explored two datasets.
-The first included behavioral signals like login activity, usage hours, and payment failures, which made it strong for predicting churn behavior. However, it lacked financial context and had a high churn rate (57%) without enough detail on the time period.
+Originally, I did an analysis of two different datasets. The first dataset seemed promising at first with 2,800 rows, contained behavioral signals including login recency, weekly usage hours, support tickets, and payment failures alongside a binary churn indicator and tenure in months. The key limitations in this dataset included no satisfaction scores, no churn reason, and no plan history. The churn rate was 57% which requires context on the measurement period before drawing conclusions. This dataset was strongest for analyzing behavioral patterns that predict churn, particularly the rare columns like payment failures and usage hours that most churn datasets don't have.
 
-The second dataset included customer, revenue, and acquisition cost data across three files. While it lacked behavioral depth, it provided better context for understanding when churn was happening and whether it was tied to financial or plan-based factors, which aligned more directly with the business question.
-
-I chose the second dataset for that reason.
+The second dataset (the one I chose) was a SaaS business metric dataset with 3 different files: Customers with 1,000 rows, then Revenue and Subscriptions both with 988 rows because the latter two only contain customers that have a churned date. This dataset had some unique columns as well including acquisition cost and revenue data. The limitations here were no information about the plan journey, no support ticket data, no satisfaction scores, and two sheets only containing churned customers. This dataset was strongest for understanding when customers were leaving and if it were tied to acquisition cost or the plans. Since dataset 2 offered richer financial context that better served the business question, I went with that one.
 
 
 ---
