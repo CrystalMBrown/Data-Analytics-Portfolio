@@ -64,7 +64,7 @@ Shorter tenure among churned users reflects the timing of the spike, not behavio
 
 ## Recommendations
 
-**1. Investigate March–June 2025**
+**1. Investigate March-June 2025**
   
 Cross-reference marketing campaign data, 
 support ticket history, and the development changelog to identify any product, 
