@@ -47,12 +47,15 @@ I then analyzed churn across:
 ## Key Findings
 
 **1. No clear at-risk customer profile**
+
 Plan type and acquisition cost showed no meaningful relationship to churn
 
 **2. Churn is driven by timing, not segmentation**
+
 Churn tripled in March 2025 and spiked again in June
 
 **3. Tenure differences are misleading without time context**
+
 Shorter tenure among churned users reflects the timing of the spike, not behavior
 
 ---
@@ -65,15 +68,20 @@ Cross-reference marketing campaign data,
 support ticket history, and the development changelog to identify any product, 
 campaign, or operational changes that coincided with the churn spike.
 
-4. **Extend the dataset to present day** — Confirm whether churn has stabilized 
+4. **Extend the dataset to present day**
+
+Confirm whether churn has stabilized 
 or is still accelerating. If still elevated, immediate intervention is needed 
 before the customer base erodes further.
 
-5. **Implement month 4 proactive Customer Success outreach** — A check-in call 
-or automated health survey to identify disengaging customers before they reach 
+7. **Implement month 4 proactive Customer Success outreach**
+
+A check-in call or automated health survey to identify disengaging customers before they reach 
 the churn window.
 
-6. **Deploy a one-question exit survey** — Even a 10% response rate from 
+10. **Deploy a one-question exit survey**
+
+Even a 10% response rate from 
 recently churned customers would provide direct evidence of the root cause 
 that no amount of internal data analysis can replace.
 
