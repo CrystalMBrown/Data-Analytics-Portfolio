@@ -1,84 +1,62 @@
-# SaaS Customer Churn Analysis
+# SaaS Customer Churn Analysis: Identifying a Sudden Churn Event
 
-Since starting self directed learning over a year ago, I had the opportunity 
-to work in a Junior Data Analyst capacity in healthcare at the end of a year 
-long Customer Experience Analyst contract. A lot of my background has been in 
-B2C and I wanted to apply those skills in a SaaS context, so SaaS churn was 
-the perfect business problem to solve. Churn is a common issue amongst businesses and 
-being able to understand why is the difference between improving CX/business 
-reputation and losing millions.
+## Business Context
 
-This dataset stood out to me because of the ability to do more with the 
-available columns. I knew I would be able to calculate and fill in tenure, 
-blanks (active status), remove redundant columns and combine multiple excel 
-sheets (XLOOKUP). These are skills that you wouldn't get to see in action 
-from my resume alone. I have experience with sales, marketing, and operations. 
-I have always loved being able to contribute to the customer experience and I 
-am really excited about being able to do that in the most impactful way. 
-I prioritize the quality of the output by making these kinds of decisions 
-before any analysis begins.
-
-In this portfolio, I chose and addressed the business question as if from 
-The Head of Customer Success: *"Who is churning, when it's happening, and 
-what we should do about it?"*
+A B2B SaaS company is experiencing churn and wants to understand **who is leaving, when it’s happening, and what to do about it**.
 
 ---
 
-## Dataset Selection
+## Key Insight
 
-Originally, I did an analysis of two different datasets. The first dataset 
-seemed promising at first with 2,800 rows, contained behavioral signals 
-including login recency, weekly usage hours, support tickets, and payment 
-failures alongside a binary churn indicator and tenure in months. The key 
-limitations in this dataset included no satisfaction scores, no churn reason, 
-and no plan history. The churn rate was 57% which requires context on the 
-measurement period before drawing conclusions. This dataset was strongest for 
-analyzing behavioral patterns that predict churn, particularly the rare columns 
-like payment failures and usage hours that most churn datasets don't have.
-
-The second dataset (the one I chose) was a SaaS business metric dataset with 
-3 different files: Customers with 1,000 rows, then Revenue and Subscriptions 
-both with 988 rows because the latter two only contain customers that have a 
-churned date. This dataset had some unique columns as well including acquisition 
-cost and revenue data. The limitations here were no information about the plan 
-journey, no support ticket data, no satisfaction scores, and two sheets only 
-containing churned customers. This dataset was strongest for understanding when 
-customers were leaving and if it were tied to acquisition cost or the plans. 
-Since dataset 2 offered richer financial context that better served the business 
-question, I went with that one.
+Churn was not driven by plan type, acquisition cost, or a specific customer segment.
+Instead, it **spiked sharply in March and June 2025**, suggesting a likely external or internal event rather than a gradual trend.
 
 ---
 
-## Process
+## Why I Chose This Dataset
 
-I chose to approach dataset 2 in Excel first. I wanted to understand how the 
-columns were constructed and to calculate the churn percentages. While exploring 
-in Excel I noticed the Revenue and Subscriptions sheets only contained 988 rows 
-compared to 1,000 in Customers. Comparing customer_id across files revealed the 
-12 missing rows were active customers which I confirmed by blank churn_date 
-entries in the Customers sheet. I resolved this by joining the Customer and 
-Revenue files using XLOOKUP on customer_id, creating one complete working 
-dataset. The Subscriptions sheet was omitted entirely as it contained no new 
-information beyond what was already in Revenue.
+I initially explored two datasets.
+The first included behavioral signals like login activity, usage hours, and payment failures, which made it strong for predicting churn behavior. However, it lacked financial context and had a high churn rate (57%) without enough detail on the time period.
 
-I used filters to identify 832 active customers and 168 churned customers — 
-a churn rate of 16.8%. I then investigated plan type, acquisition cost, and 
-tenure as potential churn predictors.
+The second dataset included customer, revenue, and acquisition cost data across three files. While it lacked behavioral depth, it provided better context for understanding when churn was happening and whether it was tied to financial or plan-based factors, which aligned more directly with the business question.
+
+I chose the second dataset for that reason.
+
+
+---
+
+##  Process
+I started in Excel to understand how the datasets were structured.
+
+- Noticed a mismatch in row counts (1,000 customers vs 988 revenue records)
+- Identified that missing records were active customers with no churn date
+- Used XLOOKUP to merge datasets into a complete working file
+- Removed redundant data (Subscriptions sheet)
+  
+After cleaning:
+
+- 832 active customers
+- 168 churned customers
+- Churn rate: **16.8%**
+  
+I then analyzed churn across:
+
+- Plan type
+- Acquisition cost
+- Customer tenure
 
 ---
 
 ## Key Findings
 
-None of the variables investigated identified a specific at-risk customer 
-profile. Instead the data points to a timing event in March 2025 as the 
-primary driver.
+**1. No clear at-risk customer profile**
+Plan type and acquisition cost showed no meaningful relationship to churn
 
-Active customers average nearly twice the tenure of churned customers — 
-8-9 months compared to 5-6 months. However, this comparison is influenced 
-by dataset timing rather than customer behavior alone. In March 2025 churn 
-tripled suddenly and never recovered, spiking again in June 2025. Acquisition 
-cost and plan type show no meaningful relationship to churn. The evidence 
-points to an external event or internal change in March 2025 as the likely driver.
+**2. Churn is driven by timing, not segmentation**
+Churn tripled in March 2025 and spiked again in June
+
+**3. Tenure differences are misleading without time context**
+Shorter tenure among churned users reflects the timing of the spike, not behavior
 
 ---
 
