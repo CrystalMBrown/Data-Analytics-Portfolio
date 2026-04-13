@@ -83,12 +83,15 @@ the churn window.
 
 **4. Deploy a one-question exit survey**
 
-Even a 10% response rate from 
-recently churned customers would provide direct evidence of the root cause 
+Even a 10% response rate from recently churned customers would provide direct evidence of the root cause 
 that no amount of internal data analysis can replace.
 
 ---
+## Business Impact
 
+With a churn rate increase from about 5% to about 15% during peak months, this represents a potential loss of 10% in customer lifetime value and poses a significant risk to recurring revenue stability.
+
+---
 ## What I Would Do Differently With More Data
 
 I would compare what services and features were used by both churned customers 
