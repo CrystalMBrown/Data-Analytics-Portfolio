@@ -1,46 +1,81 @@
 # SaaS Customer Churn Analysis: Identifying a Sudden Churn Event
 
-## Business Context
+## At a Glance
 
-A B2B SaaS company is experiencing churn and wants to understand **who is leaving, when it’s happening, and what to do about it**.
+- Churn increased **3x starting March 2025**.
+- Not driven by plan type or acquisition cost.
+- Indicates **a timing-based event, not a customer segment issue**.
+- Recommendation: investigate product, support, and marketing changes during that period.
 
 ---
 
-## Key Insight
+I transitioned from Customer Experience into data analytics and wanted to apply that background to a SaaS environment. 
+Churn is something most businesses deal with, but understanding why it’s happening is what determines whether a company improves its customer experience or slowly loses revenue and trust over time.
 
-Churn was not driven by plan type, acquisition cost, or a specific customer segment.
-Instead, it **spiked sharply in March and June 2025**, suggesting a likely external or internal event rather than a gradual trend.
+---
 
+## Business Context
+
+I approached this analysis from the perspective of a Head of Customer Success:
+
+- **Who is churning?**
+- **When churn is occurring?**
+- **What actions should be taken to reduce it?**
+
+---
+## Executive Summary
+
+Churn was **not driven by customer segmentation factors** such as plan type or acquisition cost.
+
+Instead, churn **spiked sharply in March 2025 and again in June 2025**, indicating **a systemic event rather than gradual customer dissatisfaction**.
+
+This suggests a **breakdown in customer experience or product delivery**, not a mismatch in customer targeting.
+
+Without identifying and addressing the root cause of this event, retention efforts risk being ineffective and misdirected.
+
+---
+## Business Impact
+
+- Churn increased from a stable baseline in 2024 to **3x higher levels in peak months**.
+- This type of spike represents a **significant risk to recurring revenue and customer lifetime value**.
+- Because the issue is not tied to customer profile, scaling acquisition or adjusting pricing will not resolve the problem.
+
+  This should be treated as a high priority retention incident, not a routine fluctuation
+  
 ---
 
 ## Why I Chose This Dataset
 
-Originally, I did an analysis of two different datasets. The first dataset seemed promising at first with 2,800 rows, contained behavioral signals including login recency, weekly usage hours, support tickets, and payment failures alongside a binary churn indicator and tenure in months. The key limitations in this dataset included no satisfaction scores, no churn reason, and no plan history. The churn rate was 57% which requires context on the measurement period before drawing conclusions. This dataset was strongest for analyzing behavioral patterns that predict churn, particularly the rare columns like payment failures and usage hours that most churn datasets don't have.
+I initially explored two datasets.
 
-The second dataset (the one I chose) was a SaaS business metric dataset with 3 different files: Customers with 1,000 rows, then Revenue and Subscriptions both with 988 rows because the latter two only contain customers that have a churned date. This dataset had some unique columns as well including acquisition cost and revenue data. The limitations here were no information about the plan journey, no support ticket data, no satisfaction scores, and two sheets only containing churned customers. This dataset was strongest for understanding when customers were leaving and if it were tied to acquisition cost or the plans. Since dataset 2 offered richer financial context that better served the business question, I went with that one.
+The first dataset (2,800 rows) included behavioral signals like login recency, weekly usage hours, support tickets, and payment failures. It was strong for identifying behavioral patterns, especially with less common fields like usage hours and failed payments. However, it lacked key context such as satisfaction scores, churn reasons, and plan history. The reported churn rate (57%) also lacked a clear time window, making it difficult to interpret reliably.
 
+The second dataset (which I selected) included SaaS business metrics across three files: Customers (1,000 rows), Revenue, and Subscriptions (both 988 rows, limited to churned users). It introduced financial context through acquisition cost and revenue data, but lacked behavioral and customer experience indicators.
+
+I chose the second dataset because it better supported the business question of when churn is happening and whether it’s tied to customer or financial factors, even with its limitations.
 
 ---
 
 ##  Process
-I started in Excel to understand how the datasets were structured.
+I began in Excel to understand how the data was structured and to validate key assumptions.
 
-- Noticed a mismatch in row counts (1,000 customers vs 988 revenue records)
-- Identified that missing records were active customers with no churn date
-- Used XLOOKUP to merge datasets into a complete working file
-- Removed redundant data (Subscriptions sheet)
-  
+- Identified a mismatch between Customers (1,000 rows) and Revenue (988 rows).
+- Confirmed missing records were active customers (no churn date).
+- Merged datasets using XLOOKUP on customer_id.
+- Removed the Subscriptions sheet as it added no new information.
+
 After cleaning:
 
 - 832 active customers
 - 168 churned customers
-- Churn rate: **16.8%**
-  
-I then analyzed churn across:
+- Churn rate: 16.8%
+
+From there, I analyzed churn across:
 
 - Plan type
 - Acquisition cost
 - Customer tenure
+- Time (monthly churn trends)
 
 ---
 
@@ -62,43 +97,71 @@ Shorter tenure among churned users reflects the timing of the spike, not behavio
 
 ---
 
+## What This Means
+
+The data points to a **specific event or change around March 2025** as the primary driver of churn.
+
+Because churn is not tied to plan type or acquisition cost adjusting pricing or targeting is unlikely to fix the issue.
+The root cause is more likely tied to product, experience, or operational changes.
+
+This analysis identifies where the problem is. The next step is *confirming what caused it*.
+
+---
+
 ## Recommendations
 
 **1. Investigate March-June 2025**
   
-Cross-reference marketing campaign data, 
-support ticket history, and the development changelog to identify any product, 
-campaign, or operational changes that coincided with the churn spike.
+I would start by cross-referencing:
+
+- Product releases and feature changes
+- Support ticket volume and sentiment
+- Marketing campaigns or messaging shifts
+
+The goal is to identify what changed during this period.
 
 **2. Extend the dataset to present day**
 
-Confirm whether churn has stabilized 
-or is still accelerating. If still elevated, immediate intervention is needed 
-before the customer base erodes further.
+Determine whether churn has stabilized or is still elevated.
+If it’s ongoing, this becomes a more urgent retention issue.
 
-**3. Implement month 4 proactive Customer Success outreach**
+**3. Proactive outreach at Month 4**
 
-A check-in call or automated health survey to identify disengaging customers before they reach 
-the churn window.
+Introduce a Customer Success check-in (call or automated survey) before customers reach the observed churn window.
 
-**4. Deploy a one-question exit survey**
+**4. Capture direct feedback from churned customers**
 
-Even a 10% response rate from recently churned customers would provide direct evidence of the root cause 
-that no amount of internal data analysis can replace.
+A simple one-question exit survey (“Why did you leave?”) can provide insights that internal data alone cannot.
 
 ---
-## Business Impact
 
-With a churn rate increase from about 5% to around 15% during peak months, this represents a potential loss of 10% in customer lifetime value and poses a significant risk to recurring revenue stability.
+## If I Were Embedded on This Team
+
+My first priority would be figuring out what actually caused the March spike.
+
+In the first 1–2 weeks, I would:
+
+- Compare churn cohorts before and after March 2025.
+- Review support trends for sudden increases or pattern changes.
+- Audit product releases or incidents during that window.
+
+The goal would be to isolate the root cause quickly and prevent further loss.
 
 ---
+
 ## What I Would Do Differently With More Data
 
-I would compare what services and features were used by both churned customers 
-and customers who stayed active through the spike periods. I would also calculate 
-the difference in behavior between customers who churned within 6 months and 
-those who were active longer. This would help investigate whether there is a gap 
-between what customers expected from the product and what they experienced.
+With additional data, I would:
+
+- Compare feature usage between churned and retained customers
+- Analyze behavior differences between short-term and long-term users
+- Investigate whether there’s a gap between what customers expected and what they experienced
+
+---
+
+## Final Note
+
+This project reflects how I approach problems: starting with the business question, understanding the data deeply, and focusing on decisions that actually impact the customer experience.
 
 ---
 
