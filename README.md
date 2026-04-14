@@ -25,11 +25,11 @@ I approached this analysis from the perspective of a Head of Customer Success:
 ---
 ## Executive Summary
 
-Churn was **not driven by customer segmentation factors** such as plan type or acquisition cost.
+Churn was not driven by customer segmentation factors such as plan type or acquisition cost.
 
-Instead, churn **spiked sharply in March 2025 and again in June 2025**, indicating **a systemic event rather than gradual customer dissatisfaction**.
+Instead, churn spiked sharply in March 2025 and again in June 2025, indicating a systemic event rather than gradual customer dissatisfaction.
 
-This suggests a **breakdown in customer experience or product delivery**, not a mismatch in customer targeting.
+This suggests a **breakdown in customer experience or product delivery, not a mismatch in customer targeting**.
 
 Without identifying and addressing the root cause of this event, retention efforts risk being ineffective and misdirected.
 
@@ -114,9 +114,9 @@ This analysis identifies where the problem is. The next step is *confirming what
   
 I would start by cross-referencing:
 
-- Product releases and feature changes
-- Support ticket volume and sentiment
-- Marketing campaigns or messaging shifts
+- Product releases and feature changes.
+- Support ticket volume and sentiment.
+- Marketing campaigns or messaging shifts.
 
 The goal is to identify what changed during this period.
 
@@ -153,9 +153,9 @@ The goal would be to isolate the root cause quickly and prevent further loss.
 
 With additional data, I would:
 
-- Compare feature usage between churned and retained customers
-- Analyze behavior differences between short-term and long-term users
-- Investigate whether there’s a gap between what customers expected and what they experienced
+- Compare feature usage between churned and retained customers.
+- Analyze behavior differences between short-term and long-term users.
+- Investigate whether there’s a gap between what customers expected and what they experienced.
 
 ---
 
