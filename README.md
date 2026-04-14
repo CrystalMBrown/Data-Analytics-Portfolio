@@ -139,7 +139,7 @@ A simple one-question exit survey (“Why did you leave?”) can provide insight
 
 My first priority would be figuring out what actually caused the March spike.
 
-In the first 1–2 weeks, I would:
+In the first 1-2 weeks, I would:
 
 - Compare churn cohorts before and after March 2025.
 - Review support trends for sudden increases or pattern changes.
