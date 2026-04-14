@@ -82,17 +82,14 @@ From there, I analyzed churn across:
 ## Key Findings
 
 **1. No clear at-risk customer profile**
-
 Plan type and acquisition cost showed no meaningful relationship to churn.
 
 
 **2. Churn is driven by timing, not segmentation**
-
 Churn tripled in March 2025 and spiked again in June.
 
 
 **3. Tenure differences are misleading without time context**
-
 Shorter tenure among churned users reflects the timing of the spike, not behavior.
 
 ---
